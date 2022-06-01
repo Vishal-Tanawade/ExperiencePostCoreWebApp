@@ -29,7 +29,6 @@ namespace ExperiencePostCoreWebApp.Models
 
         [DisplayName("Profile Picture")]
         [Required(ErrorMessage = "Profile Picture should not be blank")]
-
         public string ProfilePicture { get; set; }
 
     }
