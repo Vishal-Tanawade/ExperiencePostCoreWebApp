@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExperiencePostCoreWebApp.Models
 {
-    public class ClsEmployee
+    public class Employee
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmpID { get; set; }
@@ -22,10 +22,15 @@ namespace ExperiencePostCoreWebApp.Models
         [Required(ErrorMessage = "Cell Number should not be blank")]
 
         public string CellNumber { get; set; }
-        [Required(ErrorMessage = "Enter valid email address")]
+
         [EmailAddress]
+        [Required(ErrorMessage = "Enter valid email address")]
         public string Email { get; set; }
-        public virtual ICollection<ClsSkill> ClsSkills { get; set; }
+
+        [DisplayName("Profile Picture")]
+        [Required(ErrorMessage = "Profile Picture should not be blank")]
+
+        public string ProfilePicture { get; set; }
 
     }
 }

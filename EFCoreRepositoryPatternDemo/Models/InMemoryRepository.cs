@@ -13,22 +13,22 @@ namespace ExperiencePostCoreWebApp.Models
     //Project Lead
     public class InMemoryRepository : IEmployeeRepository
     {
-        private static List<ClsEmployee> _employeeList = new List<ClsEmployee>()
+        private static List<Employee> _employeeList = new List<Employee>()
             {
-              new ClsEmployee(){EmpID=1,FirstName="Aaron",LastName="Hawkins",Password="arron@123",CellNumber="(660) 663-4518",Email="aron.hawkins@aol.com" },
-              new ClsEmployee(){EmpID=2,FirstName="Hedy",LastName="Greene",Password="hedy@123",CellNumber="(608) 265-2215",Email="hedy.greene@aol.com" },
-              new ClsEmployee(){EmpID=3,FirstName="Melvin",LastName="Porter",Password="melvin@123",CellNumber="(959) 119-8364",Email="melvin.porter@aol.com"}
+              new Employee(){EmpID=1,FirstName="Aaron",LastName="Hawkins",Password="arron@123",CellNumber="(660) 663-4518",Email="aron.hawkins@aol.com",ProfilePicture="no-image" },
+              new Employee(){EmpID=2,FirstName="Hedy",LastName="Greene",Password="hedy@123",CellNumber="(608) 265-2215",Email="hedy.greene@aol.com" ,ProfilePicture="no-image"},
+              new Employee(){EmpID=3,FirstName="Melvin",LastName="Porter",Password="melvin@123",CellNumber="(959) 119-8364",Email="melvin.porter@aol.com",ProfilePicture="no-image"}
             };
 
-        private static List<ClsSkill> _skillList = new List<ClsSkill>()
+        private static List<Skill> _skillList = new List<Skill>()
             {
-            new ClsSkill(){SkillId=1,EmpID=1,SkillName="Microsoft Office Suite",Role="Business Analyst",ExperienceInYears=2},
-            new ClsSkill(){SkillId=2,EmpID=1,SkillName="Testing",Role="Developer",ExperienceInYears=3},
-            new ClsSkill(){SkillId=3,EmpID=1,SkillName="Stakeholder Management",Role="Project Lead",ExperienceInYears=4}
+            new Skill(){SkillId=1,EmpID=1,SkillName="Microsoft Office Suite",Role="Business Analyst",ExperienceInYears=2},
+            new Skill(){SkillId=2,EmpID=1,SkillName="Testing",Role="Developer",ExperienceInYears=3},
+            new Skill(){SkillId=3,EmpID=1,SkillName="Stakeholder Management",Role="Project Lead",ExperienceInYears=4}
            };
 
 
-        public ClsEmployee Add(ClsEmployee employee)
+        public Employee Add(Employee employee)
         {
             if (_employeeList.Count == 0)
             {
@@ -45,9 +45,9 @@ namespace ExperiencePostCoreWebApp.Models
         }
 
 
-        public ClsEmployee Delete(int id)
+        public Employee Delete(int id)
         {
-            ClsEmployee employee = _employeeList.FirstOrDefault(e => e.EmpID == id);
+            Employee employee = _employeeList.FirstOrDefault(e => e.EmpID == id);
             if (employee != null)
             {
                 _employeeList.Remove(employee);
@@ -57,22 +57,22 @@ namespace ExperiencePostCoreWebApp.Models
         }
 
 
-        public IEnumerable<ClsEmployee> GetAllEmployee()
+        public IEnumerable<Employee> GetAllEmployee()
         {
             return _employeeList;
         }
 
-        public ClsEmployee GetEmployeeByID(int id)
+        public Employee GetEmployeeByID(int id)
         {
             return _employeeList.FirstOrDefault(e => e.EmpID == id);
         }
-        public ClsEmployee GetEmployee(ClsEmployee employee)
+        public Employee GetEmployee(Employee employee)
         {
             return _employeeList.FirstOrDefault(e => e.Email == employee.Email && e.Password == employee.Password);
         }
-        public ClsEmployee Update(ClsEmployee employeeChanges)
+        public Employee Update(Employee employeeChanges)
         {
-            ClsEmployee employee = _employeeList.FirstOrDefault(e => e.EmpID == employeeChanges.EmpID);
+            Employee employee = _employeeList.FirstOrDefault(e => e.EmpID == employeeChanges.EmpID);
             if (employee != null)
             {
                 employee.FirstName = employeeChanges.FirstName;
@@ -84,18 +84,18 @@ namespace ExperiencePostCoreWebApp.Models
             }
             return employee;
         }
-        public ClsSkill GetSkill(int Id)
+        public Skill GetSkill(int Id)
         {
 
             return _skillList.FirstOrDefault(s => s.SkillId == Id);
         }
 
-        public IEnumerable<ClsSkill> GetAllSkill(int Id)
+        public IEnumerable<Skill> GetAllSkill(int Id)
         {
-            return _skillList.Where(s => s.EmpID == Id).ToList<ClsSkill>();
+            return _skillList.Where(s => s.EmpID == Id).ToList<Skill>();
         }
 
-        public void AddSkill(ClsSkill skill)
+        public void AddSkill(Skill skill)
         {
             if (_skillList.Count == 0)
             {
@@ -114,7 +114,7 @@ namespace ExperiencePostCoreWebApp.Models
 
         public void DeleteSkill(int id)
         {
-            ClsSkill skill = _skillList.FirstOrDefault(s => s.SkillId == id);
+            Skill skill = _skillList.FirstOrDefault(s => s.SkillId == id);
             if (skill != null)
             {
                 _skillList.Remove(skill);

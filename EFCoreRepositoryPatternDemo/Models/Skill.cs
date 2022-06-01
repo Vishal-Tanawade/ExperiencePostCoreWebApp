@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExperiencePostCoreWebApp.Models
 {
-    public class ClsSkill
+    public class Skill
     {
 
-        public ClsSkill()
+        public Skill()
         {
               
         }
@@ -24,6 +24,6 @@ namespace ExperiencePostCoreWebApp.Models
         [DisplayName("Experience In Years")]
         [Required(ErrorMessage = "Experience in years should not be blank")]
         public int ExperienceInYears { get; set; }
-        public virtual ClsEmployee ClsEmployee { get; set; }
+        public virtual Employee ClsEmployee { get; set; }
     }
 }

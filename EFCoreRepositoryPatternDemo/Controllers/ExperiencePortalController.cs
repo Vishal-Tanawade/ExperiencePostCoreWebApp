@@ -24,9 +24,9 @@ namespace ExperiencePostCoreWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(ClsEmployee employee)
+        public ActionResult Index(Employee employee)
         {
-            ClsEmployee emp = _employeeRepository.GetEmployee(employee);
+            Employee emp = _employeeRepository.GetEmployee(employee);
             if (emp != null)
             {
                 HttpContext.Session.SetInt32("EmployeeID", emp.EmpID); // In this way only we declare session variable
@@ -47,7 +47,7 @@ namespace ExperiencePostCoreWebApp.Controllers
             if (HttpContext.Session.GetInt32("EmployeeID") != null)
             {
                 int id = Convert.ToInt32(HttpContext.Session.GetInt32("EmployeeID"));
-                ClsEmployee employee = _employeeRepository.GetEmployeeByID(id); // as id==empid as we set session variable as empid
+                Employee employee = _employeeRepository.GetEmployeeByID(id); // as id==empid as we set session variable as empid
                 ViewBag.EmpID = employee.EmpID;
 
                 ViewBag.FirstName = employee.FirstName;
@@ -56,7 +56,7 @@ namespace ExperiencePostCoreWebApp.Controllers
                 ViewBag.Email = employee.Email;
 
 
-                IEnumerable<ClsSkill> skills = _employeeRepository.GetAllSkill(employee.EmpID);
+                IEnumerable<Skill> skills = _employeeRepository.GetAllSkill(employee.EmpID);
                 ViewBag.TotalYearsOfExp = skills.Sum(s => s.ExperienceInYears);
                 return View(skills);
             }
@@ -76,7 +76,7 @@ namespace ExperiencePostCoreWebApp.Controllers
         // POST: ExperiencePortalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("EmpID,FirstName,LastName,Password,CellNumber,Email")] ClsEmployee clsEmployee)
+        public ActionResult Create([Bind("EmpID,FirstName,LastName,Password,CellNumber,Email")] Employee clsEmployee)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace ExperiencePostCoreWebApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateSkill(ClsSkill skill)
+        public ActionResult CreateSkill(Skill skill)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace ExperiencePostCoreWebApp.Controllers
         // GET: ExperiencePortalController/Edit/5
         public ActionResult Edit(int id)
         {
-            ClsEmployee employee = _employeeRepository.GetEmployeeByID(id);
+            Employee employee = _employeeRepository.GetEmployeeByID(id);
 
             return View(employee);
         }
@@ -118,7 +118,7 @@ namespace ExperiencePostCoreWebApp.Controllers
         // POST: ExperiencePortalController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ClsEmployee employee)
+        public ActionResult Edit(Employee employee)
         {
             try
             {
@@ -135,14 +135,14 @@ namespace ExperiencePostCoreWebApp.Controllers
         // GET: ExperiencePortalController/Delete/5
         public ActionResult Delete(int id)
         {
-            ClsSkill skill = _employeeRepository.GetSkill(id);
+            Skill skill = _employeeRepository.GetSkill(id);
             return View(skill);
         }
 
         // POST: ExperiencePortalController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(ClsSkill skill)
+        public ActionResult Delete(Skill skill)
         {
             try
             {
