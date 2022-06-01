@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EFCoreRepositoryPatternDemo.Models
+namespace ExperiencePostCoreWebApp.Models
 {
     public static class ModelBuilderExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 
-namespace EFCoreRepositoryPatternDemo.Models
+namespace ExperiencePostCoreWebApp.Models
 {
     public class SQLEmployeeRepository: IEmployeeRepository
     {

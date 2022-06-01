@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using EFCoreRepositoryPatternDemo.Models;
+using ExperiencePostCoreWebApp.Models;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFCoreRepositoryPatternDemo.Controllers
+namespace ExperiencePostCoreWebApp.Controllers
 {
     public class ExperiencePortalController : Controller
     {

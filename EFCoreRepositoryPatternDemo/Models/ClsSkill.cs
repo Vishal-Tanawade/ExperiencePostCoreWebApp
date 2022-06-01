@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EFCoreRepositoryPatternDemo.Models
+namespace ExperiencePostCoreWebApp.Models
 {
     public class ClsSkill
     {

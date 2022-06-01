@@ -7,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EFCoreRepositoryPatternDemo.Models;
+using ExperiencePostCoreWebApp.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCoreRepositoryPatternDemo
+namespace ExperiencePostCoreWebApp
 {
     public class Startup
     {

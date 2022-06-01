@@ -1,6 +1,6 @@
 using System;
 
-namespace EFCoreRepositoryPatternDemo.Models
+namespace ExperiencePostCoreWebApp.Models
 {
     public class ErrorViewModel
     {

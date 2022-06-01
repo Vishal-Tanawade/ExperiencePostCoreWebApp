@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EFCoreRepositoryPatternDemo.Migrations
+namespace ExperiencePostCoreWebApp.Migrations
 {
     public partial class InitializeMigration : Migration
     {

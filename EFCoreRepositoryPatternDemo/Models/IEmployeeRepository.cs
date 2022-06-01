@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EFCoreRepositoryPatternDemo.Models
+namespace ExperiencePostCoreWebApp.Models
 {
     public interface IEmployeeRepository
     {
