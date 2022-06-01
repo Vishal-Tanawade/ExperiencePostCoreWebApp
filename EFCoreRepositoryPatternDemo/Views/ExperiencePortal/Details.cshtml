@@ -1,0 +1,85 @@
+﻿@model IEnumerable<EFCoreRepositoryPatternDemo.Models.ClsSkill>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<h1 class="display-2 text-info">Dashboard</h1>
+
+<p>
+   
+</p>
+<div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@ViewBag.FirstName @ViewBag.LastName</h4>
+            <p class="card-text">@ViewBag.CellNumber</p>
+            <p class="card-text">@ViewBag.Email</p>
+            <a asp-action="Edit" asp-route-id="@ViewBag.EmpID" class="card-link">Edit Details</a>  |
+            <a asp-action="CreateSkill" class="card-link">Add Skill</a>
+        </div>
+    </div>
+
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+           @* <th>
+                @Html.DisplayNameFor(model => model.SkillId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpID)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.SkillName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExperienceInYears)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.SkillId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExperienceInYears)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id=item.SkillId })
+            </td>
+        </tr>
+}
+
+ <tr>
+            <td>
+            </td>
+            <td class="text-info">
+                total Years Experience
+            </td>
+            <td class="text-danger">
+                <h3 class="text-dark display-4">@ViewBag.TotalYearsOfExp</h3> 
+            </td>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table>
