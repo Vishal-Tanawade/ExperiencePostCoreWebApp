@@ -11,9 +11,9 @@ namespace ExperiencePostCoreWebApp.Models
         {
               
         }
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SkillId { get; set; }
-        [ForeignKey("ClsEmployee")]
+        //[ForeignKey("Employeee")]
         public int EmpID { get; set; }
         [DisplayName("Skill Name")]
         [Required(ErrorMessage = "Skill name should not be blank")]
@@ -24,6 +24,6 @@ namespace ExperiencePostCoreWebApp.Models
         [DisplayName("Experience In Years")]
         [Required(ErrorMessage = "Experience in years should not be blank")]
         public int ExperienceInYears { get; set; }
-        public virtual Employee ClsEmployee { get; set; }
+        public virtual Employee Employeee { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,7 +30,10 @@ namespace ExperiencePostCoreWebApp.Models
 
         [DisplayName("Profile Picture")]
         [Required(ErrorMessage = "Profile Picture should not be blank")]
-        public string ProfilePicture { get; set; }
+        public string ProfilePicture { get; set; } = "noImage.png";
+        [NotMapped]
+        [DisplayName("Image Name")]
+        public IFormFile formFile { get; set; }
 
     }
 }

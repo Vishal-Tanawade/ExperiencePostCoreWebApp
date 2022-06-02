@@ -54,7 +54,7 @@ namespace ExperiencePostCoreWebApp.Controllers
                 ViewBag.LastName = employee.LastName;
                 ViewBag.CellNumber = employee.CellNumber;
                 ViewBag.Email = employee.Email;
-
+                ViewBag.ProfilePicture = employee.ProfilePicture;
 
                 IEnumerable<Skill> skills = _employeeRepository.GetAllSkill(employee.EmpID);
                 ViewBag.TotalYearsOfExp = skills.Sum(s => s.ExperienceInYears);
@@ -76,15 +76,15 @@ namespace ExperiencePostCoreWebApp.Controllers
         // POST: ExperiencePortalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("EmpID,FirstName,LastName,Password,CellNumber,Email")] Employee clsEmployee)
+        public ActionResult Create([Bind("EmpID,FirstName,LastName,Password,CellNumber,Email")] Employee Employeee)
         {
             if (ModelState.IsValid)
             {
-                _employeeRepository.Add(clsEmployee);
+                _employeeRepository.Add(Employeee);
 
                 return RedirectToAction(nameof(Index));
             }
-            return View(clsEmployee);
+            return View(Employeee);
 
 
         }
