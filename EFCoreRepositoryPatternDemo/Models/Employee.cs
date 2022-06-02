@@ -32,8 +32,8 @@ namespace ExperiencePostCoreWebApp.Models
         [Required(ErrorMessage = "Profile Picture should not be blank")]
         public string ProfilePicture { get; set; } = "noImage.png";
         [NotMapped]
-        [DisplayName("Image Name")]
-        public IFormFile formFile { get; set; }
+        [DisplayName("Upload Image")]
+        public IFormFile ImageFile { get; set; }
 
     }
 }
