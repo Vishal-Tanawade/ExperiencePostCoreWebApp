@@ -5,16 +5,21 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace ExperiencePostCoreWebApp.Controllers
 {
     public class ExperiencePortalController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ExperiencePortalController(IEmployeeRepository employeeRepository)
+        public ExperiencePortalController(IEmployeeRepository employeeRepository, IWebHostEnvironment hostEnvironment)
         {
             _employeeRepository = employeeRepository;
+            _hostEnvironment = hostEnvironment;
+
         }
 
         // GET: ExperiencePortalController
@@ -108,6 +113,8 @@ namespace ExperiencePostCoreWebApp.Controllers
         }
 
         // GET: ExperiencePortalController/Edit/5
+      
+        // GET: EmployeesPortalController/Edit/5
         public ActionResult Edit(int id)
         {
             Employee employee = _employeeRepository.GetEmployeeByID(id);
@@ -115,13 +122,38 @@ namespace ExperiencePostCoreWebApp.Controllers
             return View(employee);
         }
 
-        // POST: ExperiencePortalController/Edit/5
+        // POST: EmployeesPortalController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Employee employee)
+        public async Task<IActionResult> Edit(Employee employee)
         {
             try
             {
+                //Edit profile
+                // Delete Existing Image from Upload folder
+                //delete images from wwwroot/Upload folder
+                string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "Upload", employee.ProfilePicture);
+                if (System.IO.File.Exists(imagePath) && employee.ProfilePicture != "noImage.png")
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+                // Assign updated image in database
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(employee.ImageFile.FileName);
+                string extension = Path.GetExtension(employee.ImageFile.FileName);
+                employee.ProfilePicture = fileName = fileName + DateTime.Now.ToString("yyyymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Upload/", fileName);
+
+                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await employee.ImageFile.CopyToAsync(fileStream);
+                }
+
+
+                // Update record
+
+
+
                 _employeeRepository.Update(employee);
 
                 return RedirectToAction(nameof(Details));

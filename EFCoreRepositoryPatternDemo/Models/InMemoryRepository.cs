@@ -80,7 +80,7 @@ namespace ExperiencePostCoreWebApp.Models
                 employee.Password = employeeChanges.Password;
                 employee.CellNumber = employeeChanges.CellNumber;
                 employee.Email = employeeChanges.Email;
-
+                employee.ProfilePicture = employeeChanges.ProfilePicture;
             }
             return employee;
         }
